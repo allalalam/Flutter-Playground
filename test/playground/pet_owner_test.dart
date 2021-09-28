@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 
 // OOP (Object Oriented Programming) principles
-// Encapsulation
 // Abstraction
 // Inheritance
 // Polymorphism
+// Encapsulation
 
 // SOLID stands for:
 // S - Single-responsiblity Principle
@@ -12,6 +12,8 @@ import 'package:flutter_test/flutter_test.dart';
 // L - Liskov Substitution Principle
 // I - Interface Segregation Principle
 // D - Dependency Inversion Principle
+
+// Composition is better than Inheritance
 
 // https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#single-responsibility-principle
 
@@ -66,20 +68,54 @@ abstract class DomesticAnimal {
   double weight;
 
   DomesticAnimal(this.weight);
-  
+
   void eat(double foodWeight);
+
+  void makeSound() {
+    print("RRrrrr");
+  }
+
+  void sleep() {
+    print("I'm sleeping");
+  }
 }
 
-class Dog extends DomesticAnimal {
+class Xxx {
+  void makeSound() {
+    print("Stay away");
+  }
+}
+
+abstract class RunBehavior {
+  void run(double distance);
+
+  void fight() {
+
+  }
+
+}
+
+class Dog extends DomesticAnimal implements RunBehavior, Xxx {
 
   // Dog = this, DomesticAnimal = super;
   Dog(): super(0.5);
 
   @override
+  void fight() {
+
+  }
+
+  @override
+  void makeSound() {
+    vaf();
+  }
+
+  @override
   void eat(double foodWeight) {
     weight = weight + foodWeight / 9;
   }
-  
+
+  @override
   void run(double distance) {
     weight = weight - distance * 0.00005;
   }
@@ -104,5 +140,10 @@ class Cat extends DomesticAnimal {
   @override
   void eat(double foodWeight) {
     weight = weight + foodWeight / 11;
+  }
+
+  @override
+  void makeSound() {
+    print("Meow");
   }
 }
